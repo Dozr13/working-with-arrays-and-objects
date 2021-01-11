@@ -52,6 +52,18 @@ var employees = [
 
 //Code Here
 
+const employeeUpdater = () => {
+  let done = employees.map(function(elem, i, arr){
+    if(elem.firstName === 'Theo'){
+      delete employees[i]
+    }
+    if(elem.firstName === 'Lorie'){
+      employees[i].department = 'HR'
+    }
+  })
+  return employees
+}
+
 
 
 ////////// PROBLEM 2 //////////
@@ -69,7 +81,21 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 */
 
 //Code Here
-
+//!! Long way
+// function removeDuplicates(){
+//   for(let i = 0; i < workplaceAccidents.length; i++){               // Starts a loop from first index item in arr
+//     for(let j = workplaceAccidents.length -1; j > i;  j--){        // Starts a loop from last index item in arr and goes until i becomes greater than
+//       if(workplaceAccidents[i] === workplaceAccidents[j]){         // Compares results
+//         workplaceAccidents.splice(j, 1)                            // splices duplicates
+//       }
+//     }
+//   }
+//   return workplaceAccidents
+// }
+//! Better way
+function removeDuplicates(){
+  return [...new Set(workplaceAccidents)]
+}
 
 
 ////////// PROBLEM 3 //////////
@@ -97,8 +123,8 @@ var cat = {
 */
 
 //Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
+var grumpyActivity = cat.catFriends[0].activities[1]
+var fluffy2ndFriend = cat.catFriends[1].name
 
 
 
@@ -139,7 +165,19 @@ var myCar = {
 */
 
 //Code Here
+//! .map
+function recordCleaner(){
+  myCar.accidents = myCar.accidents.map(function(elem, i, arr){
+    elem.atFaultForAccident = false
+    return elem
+  })
+  return myCar
+}
 
+//! .forEach
+// function recordCleaner() {
+//   myCar.accidents.forEach(obj => obj.atFaultForAccident = false);
+// }
 
 
 ////////// PROBLEM 5 //////////
@@ -158,5 +196,16 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 */
 
 //Code Here
-
+const looper = () => {
+  numsArr = numsArr.map(function(nums, i, arr){
+    return nums.map(function(num, i, arr){
+      if(num % 2 === 0){
+        return 'even'
+      } else {
+        return 'odd'
+      }
+    })
+  })
+  return numsArr
+}
 
